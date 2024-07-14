@@ -1,3 +1,5 @@
+setup: install build publish package-reinstall
+
 install:
 	poetry install
 
@@ -18,3 +20,5 @@ package-reinstall:
 
 lint:
 	poetry run flake8 gendiff
+
+start: gendiff
