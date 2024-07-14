@@ -1,7 +1,7 @@
 setup: install build publish package-reinstall
 
 
-start: gendiff
+start: diff
 
 
 install:
@@ -9,6 +9,9 @@ install:
 
 gendiff:
 	poetry run gendiff
+
+diff:
+	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json
 
 build:
 	poetry build
@@ -24,3 +27,6 @@ package-reinstall:
 
 lint:
 	poetry run flake8 gendiff
+
+
+.PHONY: gendiff
