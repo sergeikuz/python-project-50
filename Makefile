@@ -3,6 +3,7 @@ setup:	install build publish package-reinstall
 
 start:	diff
 
+check:	lint pytest
 
 install:
 	poetry install
@@ -24,6 +25,12 @@ package-reinstall:
 
 lint:
 	poetry run flake8 gendiff
+
+pytest:
+	poetry run pytest
+
+test-coverage:
+	poetry run pytest --cov
 
 
 .PHONY: gendiff
