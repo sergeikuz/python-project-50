@@ -3,7 +3,7 @@ setup:	install build publish package-reinstall
 
 start:	diff
 
-check:	pytest #lint
+check:	pytest lint
 
 install:
 	poetry install
