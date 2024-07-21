@@ -11,6 +11,9 @@ install:
 diff:
 	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json
 
+diff-yml:
+	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
+
 build:
 	poetry build
 
@@ -31,8 +34,6 @@ pytest:
 
 test-coverage:
 	poetry run pytest --cov
-
-test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml
 
 
