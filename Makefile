@@ -28,6 +28,7 @@ package-reinstall:
 
 lint:
 	poetry run flake8 gendiff
+	poetry run flake8 tests
 
 pytest:
 	poetry run pytest
