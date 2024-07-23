@@ -1,6 +1,7 @@
 import os
 from gendiff.parser import parse_data_from_file
 
+
 def get_fixtures_path(name):
     return os.path.join('tests/fixtures', name)
 
