@@ -1,17 +1,6 @@
 from gendiff.parser import parse_data_from_file
 
 
-def stringify(value, replacer=' ', space_count=2, _lvl=1):
-    if isinstance(value, list):
-        result = '{\n'
-        for el in value:
-            result += f'{replacer*space_count*_lvl}{el}\n'
-        result += replacer * space_count * (_lvl - 2) + '}'
-    else:
-        result = str(value)
-    return result
-
-
 def make_str_bool_value_in_parse_data(path):
     parsed_data = parse_data_from_file(path)
     fix_dict = {}
@@ -25,34 +14,30 @@ def make_str_bool_value_in_parse_data(path):
     return fix_dict
 
 
-def diff(path1, path2):
-    data1 = make_str_bool_value_in_parse_data(path1)
-    data2 = make_str_bool_value_in_parse_data(path2)
-    list_keys = sorted((data1 | data2).keys())
-    diff_list = []
+def stringify(value, replacer=' ', space_count=2, _lvl=1):
+    if isinstance(value, dict):
+        result = '{\n'
+        for el, val in value.items():
+            result += f'{replacer*space_count*_lvl}{el}: '
+            result += stringify(val, replacer, space_count, _lvl + 1) + '\n'
+        result += replacer * space_count * (_lvl - 1) + '}'
+    else:
+        result = str(value)
+    return result
 
-    for key in list_keys:
-        if key in data1.keys() and key in data2.keys():
-            if data1[key] == data2[key]:
-                for k1, v1 in data1.items():
-                    if key == k1:
-                        diff_list.append(f'  {k1}: {v1}')
-            if data1[key] != data2[key]:
-                for k1, v1 in data1.items():
-                    if key == k1:
-                        diff_list.append(f'- {k1}: {v1}')
-                for k2, v2 in data2.items():
-                    if key == k2:
-                        diff_list.append(f'+ {k2}: {v2}')
-        elif key in data1.keys():
-            for k1, v1 in data1.items():
-                if key == k1:
-                    diff_list.append(f'- {k1}: {v1}')
-        elif key in data2.keys():
-            for k2, v2 in data2.items():
-                if key == k2:
-                    diff_list.append(f'+ {k2}: {v2}')
 
-    diff_string = stringify(diff_list)
+def generate_diff(dict1, dict2):
+    keys = sorted(dict1.keys() | dict2.keys())
+    diff_dict = {}
+    for key in keys:
+        if key not in dict2:
+            diff_dict[f'- {key}'] = dict1[key]
+        elif key not in dict1:
+            diff_dict[f'+ {key}'] = dict2[key]
+        elif dict1[key] == dict2[key]:
+            diff_dict[f'  {key}'] = dict1[key]
+        else:
+            diff_dict[f'- {key}'] = dict1[key]
+            diff_dict[f'+ {key}'] = dict2[key]
 
-    return diff_string
+    return stringify(diff_dict)
