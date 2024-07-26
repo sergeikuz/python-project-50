@@ -9,6 +9,8 @@ def get_information():
     parser.add_argument("second_file", type=str)
     parser.add_argument(
         "-f", "--format",
-        help="set format of output")
+        help="set format of output",
+        default='stylish', type=str
+    )
 
     return parser.parse_args()
