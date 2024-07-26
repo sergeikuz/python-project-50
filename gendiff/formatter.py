@@ -7,7 +7,7 @@ def make_str_bool_value_in_parse_data(dict_d):
         else:
             if isinstance(v, bool):
                 fix_dict[k] = str(v).lower()
-            elif v == None:
+            elif v is None:
                 fix_dict[k] = 'null'
             else:
                 fix_dict[k] = v
