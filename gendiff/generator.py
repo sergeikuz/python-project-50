@@ -7,7 +7,7 @@ def for_deleted(key, value):
 
 
 def for_added(key, value):
-     return {
+    return {
         'action': 'added',
         'name': key,
         'new_value': value
@@ -15,7 +15,7 @@ def for_added(key, value):
 
 
 def for_changed(key, value1, value2):
-     return {
+    return {
         'action': 'changed',
         'name': key,
         'old_value': value1,
@@ -24,7 +24,7 @@ def for_changed(key, value1, value2):
 
 
 def for_unchanged(key, value):
-     return {
+    return {
         'action': 'unchanged',
         'name': key,
         'value': value
