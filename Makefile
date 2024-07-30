@@ -8,11 +8,17 @@ check:	pytest lint
 install:
 	poetry install
 
-diff:
+diff-stylish-json:
 	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json
 
-diff-yml:
+diff-stylish-yml:
 	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
+
+diff-plain-yml:
+	poetry run gendiff -f plain tests/fixtures/file1.yml tests/fixtures/file2.yml
+
+diff-plain-json:
+	gendiff -f plain tests/fixtures/file1.json tests/fixtures/file2.json
 
 build:
 	poetry build
