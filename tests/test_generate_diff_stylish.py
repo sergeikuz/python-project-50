@@ -15,4 +15,4 @@ path2 = get_fixtures_path('file2.json')
 
 
 def test_generate_diff():
-    assert expected_diff == generate_diff(path1, path2)
+    assert expected_diff == generate_diff(path1, path2, format_name="stylish")

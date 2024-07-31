@@ -43,16 +43,14 @@ def make_data_to_plain(data, path=''):
 
 def make_str(fix_dict, replacer=' ', space_count=0, _lvl=1):
     if isinstance(fix_dict, list):
-        result = ''
+        result = []
         for el in fix_dict:
             if isinstance(el, list):
-                result += make_str(el)
+                result.append(make_str(el))
             else:
-                result += f'{replacer*space_count*_lvl}{el}\n'
-    else:
-        result = str(fix_dict)
+                result.append(str(el))
 
-    return result
+    return '\n'.join(result)
 
 
 def make_plain(data):
