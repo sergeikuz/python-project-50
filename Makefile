@@ -20,6 +20,9 @@ diff-plain-yml:
 diff-plain-json:
 	gendiff -f plain tests/fixtures/file1.json tests/fixtures/file2.json
 
+diff-json-json:
+	gendiff -f json tests/fixtures/file1.yml tests/fixtures/file2.yml
+
 build:
 	poetry build
 
