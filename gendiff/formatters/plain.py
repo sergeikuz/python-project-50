@@ -1,27 +1,41 @@
-def make_data_to_plain(data):
+def to_str_v(value):
+    if isinstance(value, (dict, list)):
+        return '[complex value]'
+    elif isinstance(value, bool):
+        return str(value).lower()
+    elif isinstance(value, str):
+        return f"'{value}'"
+    elif value is None:
+        return 'null'
+    else:
+        return str(value)
+
+
+def make_data_to_plain(data, path=''):
     diff = []
 
     for item in data:
+        current_key = item.get('name')
+        current_path = f"{path}.{current_key}" if path else current_key
+        new_value = to_str_v(item.get('new_value'))
+        old_value = to_str_v(item.get('old_value'))
+
         for k, v in item.items():
             if v == 'nested':
-                diff.append(make_data_to_plain(item['value']))
+                diff.append(make_data_to_plain(item['value'], current_path))
             elif v == 'deleted':
                 diff.append(
-                        f"Property '{item['name']}' was removed"
+                    f"Property '{current_path}' was removed"
                 )
             elif v == 'changed':
-                if isinstance(item['old_value'], dict):
-                    item['old_value'] = '[complex vulue]'
-                if isinstance(item['new_value'], dict):
-                    item['new_value'] = '[complex vulue]'
                 diff.append(
-                    f"Property '{item['name']}' was updated. From '{item['old_value']}' to '{item['new_value']}'"
+                    f"Property '{current_path}' was updated. "
+                    f"From {old_value} to {new_value}"
                 )
             elif v == 'added':
-                if isinstance(item['new_value'], dict):
-                    item['new_value'] = '[complex vulue]'
                 diff.append(
-                        f"Property '{item['name']}' was added with value: '{item['new_value']}'"
+                    f"Property '{current_path}' "
+                    f"was added with value: {new_value}"
                 )
 
     return diff
@@ -37,7 +51,7 @@ def make_str(fix_dict, replacer=' ', space_count=0, _lvl=1):
                 result += f'{replacer*space_count*_lvl}{el}\n'
     else:
         result = str(fix_dict)
-    
+
     return result
 
 
