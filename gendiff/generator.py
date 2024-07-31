@@ -39,26 +39,7 @@ def for_nested(key, value1, value2):
     }
 
 
-def make_value_to_str_in_dict(data):
-    fix_dict = {}
-    for k, v in data.items():
-        if isinstance(v, dict):
-            fix_dict[k] = make_value_to_str_in_dict(v)
-        else:
-            if isinstance(v, bool):
-                fix_dict[k] = str(v).lower()
-            elif v is None:
-                fix_dict[k] = 'null'
-            else:
-                fix_dict[k] = v
-
-    return fix_dict
-
-
 def generate(dict1, dict2):
-    dict1 = make_value_to_str_in_dict(dict1)
-    dict2 = make_value_to_str_in_dict(dict2)
-
     keys = sorted(dict1.keys() | dict2.keys())
     added_keys = dict2.keys() - dict1.keys()
     deleted_keys = dict1.keys() - dict2.keys()
