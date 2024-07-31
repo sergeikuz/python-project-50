@@ -1,4 +1,4 @@
-"""def make_value_to_str(data):
+def make_value_to_str(data):
     fix_dict = {}
 
     for k, v in data.items():
@@ -13,7 +13,6 @@
                 fix_dict[k] = v
 
     return fix_dict
-"""
 
 
 def make_data_stylish(data):
@@ -53,5 +52,6 @@ def make_str(fix_dict, replacer=' ', space_count=4, _lvl=1):
 
 def make_stylish(data):
     stylish_data = make_data_stylish(data)
-    result = make_str(stylish_data)
+    stylish_data_with_correct_value = make_value_to_str(stylish_data)
+    result = make_str(stylish_data_with_correct_value)
     return result
