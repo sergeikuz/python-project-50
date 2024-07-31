@@ -39,7 +39,7 @@ def make_str(fix_dict, replacer=' ', space_count=4, _lvl=1):
         result = '{\n'
         for el, val in fix_dict.items():
             if el.startswith(prefix):
-                result += f'{replacer * (space_count*_lvl - 2)}{el}: '
+                result += f'{replacer * (space_count * _lvl - 2)}{el}: '
                 result += make_str(val, replacer, space_count, _lvl + 1) + '\n'
             elif el:
                 result += f'{replacer * space_count * _lvl}{el}: '
