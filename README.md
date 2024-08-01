@@ -76,7 +76,7 @@ gendiff --format json tests/fixtures/file1.json tests/fixtures/file2.json
 
 1. **Stylish style:** *Compares two configuration files and shows a difference in stylish format.
 ```commandline
-*stylish is defoult format
+*stylish is default format
 gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
 gendiff -f stylish tests/fixtures/file1.yml tests/fixtures/file2.yml
 gendiff --format stylish tests/fixtures/file1.json tests/fixtures/file2.json
