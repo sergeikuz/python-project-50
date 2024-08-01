@@ -1,9 +1,10 @@
 ## Calculus of differences
+<hr>
 
-###Description
+### Description
 The computer of the differences is a program that determines the difference between the two data structures. This is a popular task, for the solution of which there are many online services, for example, jsondiff. A similar mechanism, for example, is used in the output of tests or in automatic monitoring of changes in configuration files.
 
-###Utility opportunities:
+### Utility opportunities:
 Support for different input formats: yml(yaml), json
 Generation of the report in the form of plain text, stylish and json
 <hr>
@@ -16,6 +17,7 @@ Generation of the report in the form of plain text, stylish and json
 
 
 This is project ["Calculus of differences"](https://ru.hexlet.io/programs/python/projects/50) on the Python Development course on [Hexlet.io](https://ru.hexlet.io/programs/python)
+
 
 ### Used technologies:
 ![](https://img.shields.io/badge/language-python-blue)
@@ -57,7 +59,6 @@ options:
   -f FORMAT, --format FORMAT
                         set format of output
 ```
-<h>
 ```
 gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
 gendiff -f plain tests/fixtures/file1.yml tests/fixtures/file2.yml
@@ -72,8 +73,8 @@ gendiff --format json tests/fixtures/file1.json tests/fixtures/file2.json
 
 [![asciicast](https://asciinema.org/a/667800.svg)](https://asciinema.org/a/667800)
 
-1. **Stylish style:** *Compares two configuration files and shows a difference in stylish format.*
-```
+1. **Stylish style:** *Compares two configuration files and shows a difference in stylish format.
+```commandline
 *stylish is defoult format
 gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
 gendiff -f stylish tests/fixtures/file1.yml tests/fixtures/file2.yml
@@ -84,7 +85,7 @@ gendiff --format stylish tests/fixtures/file1.json tests/fixtures/file2.json
 [![asciicast](https://asciinema.org/a/670392.svg)](https://asciinema.org/a/670392)
 
 2. **Plain style:** *Compares two configuration files and shows a difference in plain format.*
-```
+```commandline
 gendiff -f plain tests/fixtures/file1.yml tests/fixtures/file2.yml
 gendiff --format plain tests/fixtures/file1.json tests/fixtures/file2.json
 
@@ -93,7 +94,7 @@ gendiff --format plain tests/fixtures/file1.json tests/fixtures/file2.json
 
 3. **Json style:** *Compares two configuration files and shows a difference in json format.*
 
-```
+```commandline
 gendiff -f json tests/fixtures/file1.yml tests/fixtures/file2.yml
 gendiff --format json tests/fixtures/file1.json tests/fixtures/file2.json
 
@@ -104,7 +105,7 @@ gendiff --format json tests/fixtures/file1.json tests/fixtures/file2.json
 ### How to find differences between two files:
 Place two files that you want to compare in the tests/fixtures folder.
 Follow the team to search for differences:
-```
+```commandline
 gendiff -f plain tests/fixtures/file1.json tests/fixtures/file2.json
 
 ```
