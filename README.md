@@ -5,8 +5,9 @@
 The computer of the differences is a program that determines the difference between the two data structures. This is a popular task, for the solution of which there are many online services, for example, jsondiff. A similar mechanism, for example, is used in the output of tests or in automatic monitoring of changes in configuration files.
 
 ### Utility opportunities:
-*Support for different input formats: yml(yaml), json*
-*Generation of the report in the form of plain text, stylish and json*
+*1. Support for different input formats: yml(yaml), json*
+
+*2. Generation of the report in the form of plain text, stylish and json*
 <hr>
 
 ### Hexlet tests and linter status:
