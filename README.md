@@ -45,6 +45,8 @@ cd python-project-50
 make setup
 ```
 
+[![asciicast](https://asciinema.org/a/670403.svg)](https://asciinema.org/a/670403)
+
 ## They are launched with simple commands:*
 ```commandline
 usage: gendiff [-h] [-f FORMAT] first_file second_file
