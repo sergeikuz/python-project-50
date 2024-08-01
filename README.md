@@ -1,4 +1,9 @@
 ## Calculus of differences
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/sergeikuz/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sergeikuz/python-project-50/actions)
+[![Actions Status](https://github.com/sergeikuz/python-project-50/actions/workflows/first-workflow.yml/badge.svg)](https://github.com/sergeikuz/python-project-50/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b1590b07c51f7935365d/maintainability)](https://codeclimate.com/github/sergeikuz/python-project-50/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b1590b07c51f7935365d/test_coverage)](https://codeclimate.com/github/sergeikuz/python-project-50/test_coverage)
 <hr>
 
 ### Description
@@ -10,11 +15,6 @@ The computer of the differences is a program that determines the difference betw
 *2. Generation of the report in the form of plain text, stylish and json*
 <hr>
 
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/sergeikuz/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sergeikuz/python-project-50/actions)
-[![Actions Status](https://github.com/sergeikuz/python-project-50/actions/workflows/first-workflow.yml/badge.svg)](https://github.com/sergeikuz/python-project-50/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/b1590b07c51f7935365d/maintainability)](https://codeclimate.com/github/sergeikuz/python-project-50/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/b1590b07c51f7935365d/test_coverage)](https://codeclimate.com/github/sergeikuz/python-project-50/test_coverage)
 
 
 This is project ["Calculus of differences"](https://ru.hexlet.io/programs/python/projects/50) on the Python Development course on [Hexlet.io](https://ru.hexlet.io/programs/python)
