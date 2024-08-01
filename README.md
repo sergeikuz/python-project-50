@@ -6,7 +6,7 @@
 
 [![asciicast](https://asciinema.org/a/667800.svg)](https://asciinema.org/a/667800)
 
-[![asciicast](https://asciinema.org/a/670389.svg)](https://asciinema.org/a/670389)
+[![asciicast](https://asciinema.org/a/670392.svg)](https://asciinema.org/a/670392)
 
 [![asciicast](https://asciinema.org/a/670385.svg)](https://asciinema.org/a/670385)
 
