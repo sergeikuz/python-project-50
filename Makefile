@@ -9,19 +9,19 @@ install:
 	poetry install
 
 diff-stylish-json:
-	poetry run gendiff tests/fixtures/file1.json tests/fixtures/file2.json
+	gendiff tests/fixtures/file1.json tests/fixtures/file2.json
 
 diff-stylish-yml:
-	poetry run gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
+	gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
 
 diff-plain-yml:
-	poetry run gendiff -f plain tests/fixtures/file1.yml tests/fixtures/file2.yml
+	gendiff -f plain tests/fixtures/file1.yml tests/fixtures/file2.yml
 
 diff-plain-json:
-	gendiff -f plain tests/fixtures/file1.json tests/fixtures/file2.json
+	gendiff --format plain tests/fixtures/file1.json tests/fixtures/file2.json
 
 diff-json-json:
-	gendiff -f json tests/fixtures/file1.yml tests/fixtures/file2.yml
+	gendiff --format json tests/fixtures/file1.json tests/fixtures/file2.json
 
 build:
 	poetry build
