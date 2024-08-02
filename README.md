@@ -49,7 +49,7 @@ make setup
 
 ## They are launched with simple commands:*
 ```commandline
-usage: gendiff [-h] [-f FORMAT] first_file second_file
+usage: gendiff [-h] [-f {stylish,plain,json}] first_file second_file
 
 Compares two configuration files and shows a difference.
 
@@ -59,7 +59,7 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  -f FORMAT, --format FORMAT
+  -f {stylish,plain,json}, --format {stylish,plain,json}
                         set format of output, you can choose formats: stylish, plain, json, (default format: stylish)
 ```
 ```

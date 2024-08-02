@@ -15,7 +15,8 @@ def get_information():
     parser.add_argument("second_file", type=str)
     parser.add_argument(
         "-f", "--format",type=str,
-        default="stylish", help=f"{HELP_FORMAT}"
+        default="stylish", choices=['stylish', 'plain', 'json'],
+        help=f"{HELP_FORMAT}"
     )
 
     return parser.parse_args()
