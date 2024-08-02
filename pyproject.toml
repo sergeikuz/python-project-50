@@ -1,10 +1,21 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "The computer of the differences is a program that determines the difference between the two data structures. This is a popular task, for the solution of which there are many online services, for example, jsondiff. A similar mechanism, for example, is used in the output of tests or in automatic monitoring of changes in configuration files. Utility opportunities: * Support for different input formats: yml(yaml), json. * Generation of the report in the form of plain text, stylish and json"
 authors = ["Sergei Kuznetsov <s8kuznetsov888@gmail.com>"]
 readme = "README.md"
 packages = [{include = "gendiff"}]
+repository = "https://github.com/sergeikuz/python-project-50"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Framework :: Flake8",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "License :: Free For Educational Use",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Calculus of differences :: Compares two configuration files and shows a difference.",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
