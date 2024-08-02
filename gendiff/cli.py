@@ -9,7 +9,7 @@ def get_information():
     parser.add_argument("second_file", type=str)
     parser.add_argument(
         "-f", "--format",
-        help="set format of output",
+        help="set format of output, you can choose formats: stylish, plain, json, (default format: stylish)",
         default='stylish', type=str
     )
 
