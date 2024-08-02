@@ -14,7 +14,7 @@ def get_information():
     parser.add_argument("first_file", type=str)
     parser.add_argument("second_file", type=str)
     parser.add_argument(
-        "-f", "--format",type=str,
+        "-f", "--format", type=str,
         default="stylish", choices=['stylish', 'plain', 'json'],
         help=f"{HELP_FORMAT}"
     )
