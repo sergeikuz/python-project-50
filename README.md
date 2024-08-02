@@ -60,7 +60,7 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
   -f FORMAT, --format FORMAT
-                        set format of output
+                        set format of output, you can choose formats: stylish, plain, json, (default format: stylish)
 ```
 ```
 gendiff tests/fixtures/file1.yml tests/fixtures/file2.yml
