@@ -1,6 +1,12 @@
 import argparse
 
 
+HELP_FORMAT = (
+    "set format of output"
+    ", you can choose formats: stylish, plain, json, "
+    "(default format: stylish)")
+
+
 def get_information():
     parser = argparse.ArgumentParser(
         description="Compares two configuration files and shows a difference."
@@ -9,7 +15,7 @@ def get_information():
     parser.add_argument("second_file", type=str)
     parser.add_argument(
         "-f", "--format",
-        help="set format of output, you can choose formats: stylish, plain, json, (default format: stylish)",
+        help=f"{HELP_FORMAT}",
         default='stylish', type=str
     )
 
