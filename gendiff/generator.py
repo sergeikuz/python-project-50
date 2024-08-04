@@ -35,11 +35,11 @@ def for_nested(key, value1, value2):
     return {
         'action': 'nested',
         'name': key,
-        'value': generate(value1, value2)
+        'value': get_differences(value1, value2)
     }
 
 
-def generate(dict1, dict2):
+def get_differences(dict1, dict2):
     keys = sorted(dict1.keys() | dict2.keys())
     added_keys = dict2.keys() - dict1.keys()
     deleted_keys = dict1.keys() - dict2.keys()
