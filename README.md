@@ -21,7 +21,7 @@ This is project ["Calculus of differences"](https://ru.hexlet.io/programs/python
 
 
 ### Used technologies:
-![](https://img.shields.io/badge/language-python-blue)
+[![](https://img.shields.io/badge/language-python-blue)](https://poetry.eustace.io/)
 ![](https://img.shields.io/badge/library-argparse-red)
 ![](https://img.shields.io/badge/library-PyYAML-yellow)
 ![](https://img.shields.io/badge/library-json-brightgreen)
