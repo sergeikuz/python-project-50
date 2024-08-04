@@ -22,11 +22,11 @@ This is project ["Calculus of differences"](https://ru.hexlet.io/programs/python
 
 ### Used technologies:
 ![](https://img.shields.io/badge/language-python-blue)
-![](https://img.shields.io/badge/lybrary-argparse-red)
-![](https://img.shields.io/badge/lybrary-PyYAML-yellow)
-![](https://img.shields.io/badge/lybrary-json-brightgreen)
-![](https://img.shields.io/badge/lybrary-yaml-orange)
-![](https://img.shields.io/badge/lybrary-os.path-ff67b4)
+![](https://img.shields.io/badge/library-argparse-red)
+![](https://img.shields.io/badge/library-PyYAML-yellow)
+![](https://img.shields.io/badge/library-json-brightgreen)
+![](https://img.shields.io/badge/library-yaml-orange)
+![](https://img.shields.io/badge/library-os.path-ff67b4)
 
 This project was built using these tools:
 
