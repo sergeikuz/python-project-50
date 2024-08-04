@@ -1,4 +1,4 @@
-def for_deleted(key, value):
+def fetch_deleted(key, value):
     return {
         'action': 'deleted',
         'name': key,
@@ -6,7 +6,7 @@ def for_deleted(key, value):
     }
 
 
-def for_added(key, value):
+def fetch_added(key, value):
     return {
         'action': 'added',
         'name': key,
@@ -14,7 +14,7 @@ def for_added(key, value):
     }
 
 
-def for_changed(key, value1, value2):
+def fetch_changed(key, value1, value2):
     return {
         'action': 'changed',
         'name': key,
@@ -23,7 +23,7 @@ def for_changed(key, value1, value2):
     }
 
 
-def for_unchanged(key, value):
+def fetch_unchanged(key, value):
     return {
         'action': 'unchanged',
         'name': key,
@@ -31,7 +31,7 @@ def for_unchanged(key, value):
     }
 
 
-def for_nested(key, value1, value2):
+def fetch_nested(key, value1, value2):
     return {
         'action': 'nested',
         'name': key,
@@ -50,14 +50,14 @@ def get_differences(dict1, dict2):
         value1 = dict1.get(key)
         value2 = dict2.get(key)
         if key in added_keys:
-            diff.append(for_added(key, value2))
+            diff.append(fetch_added(key, value2))
         elif key in deleted_keys:
-            diff.append(for_deleted(key, value1))
+            diff.append(fetch_deleted(key, value1))
         elif isinstance(value1, dict) and isinstance(value2, dict):
-            diff.append(for_nested(key, value1, value2))
+            diff.append(fetch_nested(key, value1, value2))
         elif value1 != value2:
-            diff.append(for_changed(key, value1, value2))
+            diff.append(fetch_changed(key, value1, value2))
         else:
-            diff.append(for_unchanged(key, value1))
+            diff.append(fetch_unchanged(key, value1))
 
     return diff
