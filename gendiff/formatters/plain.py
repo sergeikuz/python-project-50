@@ -22,7 +22,7 @@ def make_data_to_plain(data, path=''):
 
         for k, v in item.items():
             if v == 'nested':
-                diff.append(make_data_to_plain(item['value'], current_path))
+                diff.extend(make_data_to_plain(item['value'], current_path))
             elif v == 'deleted':
                 diff.append(
                     f"Property '{current_path}' was removed"
@@ -41,19 +41,7 @@ def make_data_to_plain(data, path=''):
     return diff
 
 
-def make_str(fix_dict, replacer=' ', space_count=0, _lvl=1):
-    if isinstance(fix_dict, list):
-        result = []
-        for el in fix_dict:
-            if isinstance(el, list):
-                result.append(make_str(el))
-            else:
-                result.append(str(el))
-
-    return '\n'.join(result)
-
-
 def make_plain(data):
     plain_list = make_data_to_plain(data)
-    result = make_str(plain_list)
-    return result
+    result_to_str = '\n'.join(plain_list)
+    return result_to_str
