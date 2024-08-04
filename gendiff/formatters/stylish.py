@@ -30,6 +30,8 @@ def make_data_stylish(data):
             elif v == 'changed':
                 diff[f'- {item["name"]}'] = item['old_value']
                 diff[f'+ {item["name"]}'] = item['new_value']
+            #elif v not in ['unchanged', 'deleted', 'added', 'changed']:
+                #raise ValueError(f"Unsupported action: {v}")
     return diff
 
 
