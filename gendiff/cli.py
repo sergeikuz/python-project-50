@@ -7,7 +7,7 @@ HELP_FORMAT = (
     "(default format: stylish)")
 
 
-def get_information():
+def get_arguments():
     parser = argparse.ArgumentParser(
         description="Compares two configuration files and shows a difference."
     )
