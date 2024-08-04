@@ -1,9 +1,9 @@
-def make_value_to_str(data):
+def to_str(data):
     fix_dict = {}
 
     for k, v in data.items():
         if isinstance(v, dict):
-            fix_dict[k] = make_value_to_str(v)
+            fix_dict[k] = to_str(v)
         else:
             if isinstance(v, bool):
                 fix_dict[k] = str(v).lower()
@@ -52,6 +52,6 @@ def make_str(fix_dict, replacer=' ', space_count=4, _lvl=1):
 
 def make_stylish(data):
     stylish_data = make_data_stylish(data)
-    stylish_data_with_correct_value = make_value_to_str(stylish_data)
+    stylish_data_with_correct_value = to_str(stylish_data)
     result = make_str(stylish_data_with_correct_value)
     return result
