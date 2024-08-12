@@ -1,14 +1,15 @@
 def to_str_v(value):
-    if isinstance(value, (dict, list)):
-        return '[complex value]'
-    elif isinstance(value, bool):
-        return str(value).lower()
-    elif isinstance(value, str):
-        return f"'{value}'"
-    elif value is None:
-        return 'null'
-    else:
-        return str(value)
+    match value:
+        case dict(value) | list(value):
+            return '[complex value]'
+        case bool(value):
+            return str(value).lower()
+        case str(value):
+            return f"'{value}'"
+        case None:
+            return 'null'
+        case _:
+            return str(value)
 
 
 def make_data_to_plain(data: list, path='') -> list:
