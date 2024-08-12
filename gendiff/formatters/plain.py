@@ -11,7 +11,7 @@ def to_str_v(value):
         return str(value)
 
 
-def make_data_to_plain(data, path=''):
+def make_data_to_plain(data: list, path='') -> list:
     diff = []
 
     for item in data:
@@ -20,19 +20,19 @@ def make_data_to_plain(data, path=''):
         new_value = to_str_v(item.get('new_value'))
         old_value = to_str_v(item.get('old_value'))
 
-        for k, v in item.items():
-            if v == 'nested':
+        match item.get('action'):
+            case 'nested':
                 diff.extend(make_data_to_plain(item['value'], current_path))
-            elif v == 'deleted':
+            case 'deleted':
                 diff.append(
                     f"Property '{current_path}' was removed"
                 )
-            elif v == 'changed':
+            case 'changed':
                 diff.append(
                     f"Property '{current_path}' was updated. "
                     f"From {old_value} to {new_value}"
                 )
-            elif v == 'added':
+            case 'added':
                 diff.append(
                     f"Property '{current_path}' "
                     f"was added with value: {new_value}"
@@ -41,7 +41,7 @@ def make_data_to_plain(data, path=''):
     return diff
 
 
-def make_plain(data):
+def make_plain(data: list) -> str:
     plain_list = make_data_to_plain(data)
     result_to_str = '\n'.join(plain_list)
     return result_to_str
