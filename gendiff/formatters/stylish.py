@@ -30,8 +30,8 @@ def make_data_stylish(data: list) -> dict:
             case 'changed':
                 diff[f'- {item["name"]}'] = item['old_value']
                 diff[f'+ {item["name"]}'] = item['new_value']
-#            #elif v not in ['unchanged', 'deleted', 'added', 'changed']:
-#                #raise ValueError(f"Unsupported action: {v}")
+            case _:
+                raise ValueError(f"Unsupported action: {item.get('action')}")
     return diff
 
 
