@@ -44,20 +44,20 @@ def get_differences(dict1, dict2):
     added_keys = dict2.keys() - dict1.keys()
     deleted_keys = dict1.keys() - dict2.keys()
 
-    diff = []
+    diff = {}
 
     for key in keys:
         value1 = dict1.get(key)
         value2 = dict2.get(key)
         if key in added_keys:
-            diff.append(fetch_added(key, value2))
+            diff[key] = fetch_added(key, value2)
         elif key in deleted_keys:
-            diff.append(fetch_deleted(key, value1))
+            diff[key] = fetch_deleted(key, value1)
         elif isinstance(value1, dict) and isinstance(value2, dict):
-            diff.append(fetch_nested(key, value1, value2))
+            diff[key] = fetch_nested(key, value1, value2)
         elif value1 != value2:
-            diff.append(fetch_changed(key, value1, value2))
+            diff[key] = fetch_changed(key, value1, value2)
         else:
-            diff.append(fetch_unchanged(key, value1))
+            diff[key] = fetch_unchanged(key, value1)
 
     return diff
