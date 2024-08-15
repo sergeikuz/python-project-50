@@ -62,7 +62,7 @@ def make_stylish(node: dict, depth=0) -> str:
                 )
             case _:
                 raise ValueError(
-                        f"Unsupported action: {item.get('action')}"
+                        f"Unsupported action: {value.get('action')}"
                 )
 
     result = itertools.chain('{', lines, [INDENT * depth + '}'])
