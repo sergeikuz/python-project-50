@@ -60,6 +60,10 @@ def make_stylish(node: dict, depth=0) -> str:
                     f"{space}"
                     f"{build_line(value, 'value', depth)}"
                 )
+            case _:
+                raise ValueError(
+                        f"Unsupported action: {item.get('action')}"
+                )
 
     result = itertools.chain('{', lines, [INDENT * depth + '}'])
     return "\n".join(result)
