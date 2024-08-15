@@ -1,59 +1,64 @@
-def to_str(data):
-    fix_dict = {}
-
-    for k, v in data.items():
-        match v:
-            case dict(v):
-                fix_dict[k] = to_str(v)
-            case bool(v):
-                fix_dict[k] = str(v).lower()
-            case None:
-                fix_dict[k] = 'null'
-            case _:
-                fix_dict[k] = v
-
-    return fix_dict
+import itertools
+REPLACER = '  '
+INDENT = '    '
 
 
-def make_data_stylish(data: list) -> dict:
-    diff = {}
-    for item in data:
-        match item.get('action'):
-            case 'nested':
-                diff[f'  {item["name"]}'] = make_data_stylish(item['value'])
-            case 'unchanged':
-                diff[f'  {item["name"]}'] = item['value']
-            case 'deleted':
-                diff[f'- {item["name"]}'] = item['old_value']
-            case 'added':
-                diff[f'+ {item["name"]}'] = item['new_value']
-            case 'changed':
-                diff[f'- {item["name"]}'] = item['old_value']
-                diff[f'+ {item["name"]}'] = item['new_value']
-            case _:
-                raise ValueError(f"Unsupported action: {item.get('action')}")
-    return diff
-
-
-def make_str(fix_dict: dict, replacer=' ', space_count=4, _lvl=1) -> str:
-    if isinstance(fix_dict, dict):
-        prefix = ('  ', '+ ', '- ')
-        result = '{\n'
-        for el, val in fix_dict.items():
-            if el.startswith(prefix):
-                result += f'{replacer * (space_count * _lvl - 2)}{el}: '
-                result += make_str(val, replacer, space_count, _lvl + 1) + '\n'
-            elif el:
-                result += f'{replacer * space_count * _lvl}{el}: '
-                result += make_str(val, replacer, space_count, _lvl + 1) + '\n'
-        result += replacer * space_count * (_lvl - 1) + '}'
+def to_str(value, depth):
+    if isinstance(value, dict):
+        result = []
+        for key, value in value.items():
+            space = INDENT * (depth + 1)
+            result.append(f"\n{space}{key}: {to_str(value, depth + 1)}")
+        line = itertools.chain('{', result, '\n', [INDENT * depth, '}'])
+        return ''.join(line)
+    elif isinstance(value, bool):
+        return str(value).lower()
+    elif value is None:
+        return 'null'
     else:
-        result = str(fix_dict)
-    return result
+        return value
 
 
-def make_stylish(data: list) -> str:
-    stylish_data = make_data_stylish(data)
-    stylish_data_with_correct_value = to_str(stylish_data)
-    result = make_str(stylish_data_with_correct_value)
-    return result
+def build_line(data, key, depth: int, INDENT='  ') -> str:
+    return f"{'  ' * depth}{INDENT}{data['name']}: " \
+           f"{to_str(data[key], depth + 1)}"
+
+
+def make_stylish(node: dict, depth=0) -> str:
+    lines = []
+    space = REPLACER * (depth + 1)
+
+    for value in node.values():
+        match value['action']:
+            case 'nested':
+                lines.append(
+                    f"{space * 2}{value['name']}: "
+                    f"{make_stylish(value['value'], depth + 1)}"
+                )
+            case 'changed':
+                lines.append(
+                    f"{space}"
+                    f"{build_line(value, 'old_value', depth, '- ')}"
+                )
+                lines.append(
+                    f"{space}"
+                    f"{build_line(value, 'new_value', depth, '+ ')}"
+                )
+            case 'deleted':
+                lines.append(
+                    f"{space}"
+                    f"{build_line(value, 'old_value', depth, '- ')}"
+                )
+            case 'added':
+                lines.append(
+                    f"{space}"
+                    f"{build_line(value, 'new_value', depth, '+ ')}"
+                )
+            case 'unchanged':
+                lines.append(
+                    f"{space}"
+                    f"{build_line(value, 'value', depth)}"
+                )
+
+    result = itertools.chain('{', lines, [INDENT * depth + '}'])
+    return "\n".join(result)
