@@ -4,19 +4,20 @@ INDENT = '    '
 
 
 def to_str(value, depth):
-    if isinstance(value, dict):
-        result = []
-        for key, value in value.items():
-            space = INDENT * (depth + 1)
-            result.append(f"\n{space}{key}: {to_str(value, depth + 1)}")
-        line = itertools.chain('{', result, '\n', [INDENT * depth, '}'])
-        return ''.join(line)
-    elif isinstance(value, bool):
-        return str(value).lower()
-    elif value is None:
-        return 'null'
-    else:
-        return value
+    match value:
+        case dict(value):
+            result = []
+            for key, value in value.items():
+                space = INDENT * (depth + 1)
+                result.append(f"\n{space}{key}: {to_str(value, depth + 1)}")
+            line = itertools.chain('{', result, '\n', [INDENT * depth, '}'])
+            return ''.join(line)
+        case bool(value):
+            return str(value).lower()
+        case None:
+            return 'null'
+        case _:
+            return value
 
 
 def build_line(data, key, depth: int, INDENT='  ') -> str:
