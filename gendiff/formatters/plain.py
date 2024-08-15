@@ -1,6 +1,6 @@
 def to_str_v(value):
     match value:
-        case dict(value) | list(value):
+        case dict(value):
             return '[complex value]'
         case bool(value):
             return str(value).lower()
@@ -15,7 +15,7 @@ def to_str_v(value):
 def make_data_to_plain(data: list, path='') -> list:
     diff = []
 
-    for item in data:
+    for item in data.values():
         current_key = item.get('name')
         current_path = f"{path}.{current_key}" if path else current_key
         new_value = to_str_v(item.get('new_value'))
