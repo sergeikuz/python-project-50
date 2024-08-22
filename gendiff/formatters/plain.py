@@ -38,6 +38,12 @@ def make_data_to_plain(data: list, path='') -> list:
                     f"Property '{current_path}' "
                     f"was added with value: {new_value}"
                 )
+            case 'unchanged':
+                continue
+            case _:
+                raise ValueError(
+                    f"Unsupported action: {item.get('action')}"
+                )
 
     return diff
 
